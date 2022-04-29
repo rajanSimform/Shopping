@@ -9,6 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { MyFormComponent } from './my-form/my-form.component';
 import { ProductComponent } from './product/product.component';
+import { ProductService } from './shared/product.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { ProductComponent } from './product/product.component';
     ProductComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
