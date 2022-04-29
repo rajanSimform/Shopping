@@ -9,6 +9,7 @@ import { ProductService } from '../shared/product.service';
 })
 export class ProductComponent implements OnInit {
   allProducts: Product[];
+  selectProdToggle: boolean = false;
   selectedProduct: Product;
   constructor(private productService: ProductService) {}
 
@@ -20,5 +21,23 @@ export class ProductComponent implements OnInit {
 
   displaySelected(id: number) {
     this.selectedProduct = this.allProducts[id - 1];
+  }
+
+  displayToggle(id: number) {
+    // if item is selected
+    if (this.selectProdToggle) {
+      // if selected item id is same then toggle
+      if (
+        id - 1 ===
+        this.allProducts.findIndex((x) => x === this.selectedProduct)
+      ) {
+        this.selectProdToggle = false;
+      }
+      // set the selected item by setting toggled
+    } else {
+      this.selectProdToggle = true;
+    }
+    console.log('after:', this.selectProdToggle);
+    this.displaySelected(id);
   }
 }
