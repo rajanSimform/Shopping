@@ -1,0 +1,50 @@
+<div class="container mt-4">
+  <div class="shadow p-4">
+    <h3>{{selectedItem.name}}</h3>
+    <form [formGroup]="productEditForm" (ngSubmit)="onUpdate()">
+      <div class="form-group">
+        <div class="row">
+          
+          <div class="col-md-6">
+            <label for="prodPrice">Price</label>
+            <input type="number" 
+              class="form-control"
+              min="0"
+              value={{selectedItem.price}}
+              [ngClass]="(!productEditForm.get('prodPrice')!.valid && productEditForm.get('prodPrice')!.touched)? 'is-invalid':''"
+              [ngClass]="productEditForm.get('prodPrice')!.valid ? 'is-valid':''"
+              formControlName="prodPrice">
+              <span 
+                *ngIf="!productEditForm.get('prodPrice')!.valid  && productEditForm.get('prodPrice')!.touched"
+                class="text-danger mt-1">Please Enter Product Price
+              </span>
+          </div>
+
+          <div class="col-md-6">
+            <label for="prodQuant">Quantity</label>
+            <input 
+              type="number" 
+              class="form-control"
+              min="1"
+              value={{selectedItem.quantity}}
+              [ngClass]="(!productEditForm.get('prodQuant')!.valid && productEditForm.get('prodQuant')!.touched)? 'is-invalid':''"
+              [ngClass]="productEditForm.get('prodQuant')!.valid ? 'is-valid':''"
+              formControlName="prodQuant">
+            <span 
+              *ngIf="!productEditForm.get('prodQuant')!.valid  && productEditForm.get('prodQuant')!.touched"
+              class="text-danger mt-1">Please Enter Product Quantity
+            </span>
+          </div>
+        </div>
+        
+        <button 
+          type="submit" 
+          class="btn btn-warning px-5 mt-2" 
+          [disabled]="productEditForm.invalid || productEditForm.pristine">Edit
+        </button>
+          
+      </div>
+    </form>
+  </div>
+  <button class="btn btn-primary mt-3 ml-5" (click)="backToPreviousBtn()">Back to List</button>
+</div>

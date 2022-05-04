@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from './product.model';
+import { Product } from '../product/product.model';
 
 @Injectable({
   providedIn: 'root',
@@ -20,5 +20,17 @@ export class ProductService {
 
   getProducts() {
     return this.products;
+  }
+
+  getProductById(id: number) {
+    return this.products[id - 1];
+  }
+
+  updateProduct(id: number, updatedProduct: Product) {
+    this.products[id - 1] = updatedProduct;
+  }
+
+  deleteProductById(id: number) {
+    this.products.splice(id - 1, 1);
   }
 }

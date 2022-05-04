@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Product } from '../shared/product.model';
-import { ProductService } from '../shared/product.service';
+import { Product } from '../product.model';
+import { ProductService } from '../../shared/product.service';
 
 @Component({
-  selector: 'app-my-form',
-  templateUrl: './my-form.component.html',
-  styleUrls: ['./my-form.component.css'],
+  selector: 'app-add-product',
+  templateUrl: './add-product.component.html',
+  styleUrls: ['./add-product.component.css'],
 })
-export class MyFormComponent implements OnInit {
+export class AddProductComponent implements OnInit {
   productForm: FormGroup;
 
   constructor(private productService: ProductService) {}
@@ -35,7 +35,7 @@ export class MyFormComponent implements OnInit {
     const newProduct = new Product(name, price, quantity);
 
     this.productService.addProduct(newProduct);
-    console.log(this.productService.getProducts());
+    // console.log(this.productService.getProducts());
     this.onReset();
   }
 

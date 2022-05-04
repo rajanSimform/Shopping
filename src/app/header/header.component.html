@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Shopping App</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+  <a class="navbar-brand" routerLink="./">Shopping App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-dropdown" aria-controls="nav-dropdown" aria-expanded="false" aria-label="Toggle navigation" (click)="navDropDown.classList.toggle('collapse')">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+  <div class="collapse navbar-collapse" id="nav-dropdown" #navDropDown>
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" routerLink="">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" routerLink="/products">Products</a>
-      <a class="nav-item nav-link" routerLink="/my-form">Form</a>
+      <a class="nav-item nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="">Home</a>
+      <a class="nav-item nav-link" routerLinkActive="active" routerLink="/products">Products</a>
+      <a class="nav-item nav-link" routerLinkActive="active" routerLink="/add-product">Form</a>
     </div>
   </div>
 </nav>
